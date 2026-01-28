@@ -1,0 +1,358 @@
+openapi: 3.1.0
+info:
+  title: amoCRM Unsorted (Forms) API
+  version: 0.1.0
+tags: []
+paths:
+  /api/v4/leads/unsorted/forms:
+    post:
+      operationId: UnsortedLeads_createForms
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/UnsortedCreateResponse'
+                  - $ref: '#/components/schemas/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UnsortedFormCreateItem'
+  /api/v4/leads/unsorted/{uid}/accept:
+    post:
+      operationId: UnsortedLeads_accept
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/UnsortedAcceptResponse'
+                  - $ref: '#/components/schemas/Problem'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnsortedAcceptRequest'
+  /api/v4/leads/unsorted/{uid}/decline:
+    delete:
+      operationId: UnsortedLeads_decline
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/UnsortedAcceptResponse'
+                  - $ref: '#/components/schemas/Problem'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnsortedDeclineRequest'
+security:
+  - BearerAuth: []
+components:
+  schemas:
+    CompanyCreate:
+      type: object
+      properties:
+        name:
+          type: string
+    ContactCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        custom_fields_values:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
+          description: Custom fields payload (same as contact create API)
+    CustomFieldValue:
+      type: object
+      required:
+        - values
+      properties:
+        field_id:
+          type: integer
+          format: int64
+          description: Use either field_id or field_code (e.g. PHONE/EMAIL)
+        field_code:
+          type: string
+          description: Field code (e.g. PHONE/EMAIL)
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldValueItem'
+          description: Values for the field (multiple values allowed)
+    CustomFieldValueItem:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          anyOf:
+            - type: string
+            - type: integer
+              format: int32
+            - type: boolean
+        enum_id:
+          type: integer
+          format: int64
+          description: Option id for list/select custom fields (one of predefined options)
+        enum_code:
+          type: string
+          description: Option code for list/select custom fields (if you use code instead of id)
+    FormMetadata:
+      type: object
+      properties:
+        ip:
+          type: string
+          description: IP address of the submitter
+        form_id:
+          anyOf:
+            - type: string
+            - type: integer
+              format: int64
+          description: Form id in your system (string or numeric)
+        form_sent_at:
+          type: integer
+          format: int64
+          description: Unix timestamp (seconds) when the form was submitted
+        form_name:
+          type: string
+          description: Form name (shown in amoCRM)
+        form_page:
+          type: string
+          description: Page URL where form lives
+        referer:
+          type: string
+          description: Referrer URL
+        visitor_uid:
+          type: string
+          description: Visitor uid from tracking, if you have it
+        form_type:
+          type: integer
+          format: int32
+          description: Form type code from amoCRM, use only if you know it
+    LeadCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        visitor_uid:
+          type: string
+          description: Website visitor uid from tracking; links this lead to a site visit
+        custom_fields_values:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
+          description: Custom fields payload (same as lead create API)
+        _embedded:
+          type: object
+          properties:
+            tags:
+              type: array
+              items:
+                $ref: '#/components/schemas/Tag'
+              description: Tags to attach
+    Problem:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        type:
+          type: string
+    RefEntity:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        _links:
+          type: object
+          unevaluatedProperties: {}
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    UnsortedAcceptRequest:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          description: User id on whose behalf the item is accepted
+        status_id:
+          type: integer
+          format: int64
+          description: Status id for the created lead
+    UnsortedAcceptResponse:
+      type: object
+      properties:
+        uid:
+          type: string
+        pipeline_id:
+          type: integer
+          format: int64
+        category:
+          type: string
+          enum:
+            - sip
+            - mail
+            - chats
+            - forms
+        created_at:
+          type: integer
+          format: int64
+        _embedded:
+          $ref: '#/components/schemas/UnsortedCreatedEmbedded'
+    UnsortedCreateResponse:
+      type: object
+      properties:
+        _total_items:
+          type: integer
+          format: int32
+        _embedded:
+          type: object
+          properties:
+            unsorted:
+              type: array
+              items:
+                $ref: '#/components/schemas/UnsortedCreatedItem'
+    UnsortedCreatedEmbedded:
+      type: object
+      properties:
+        leads:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefEntity'
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefEntity'
+        companies:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefEntity'
+    UnsortedCreatedItem:
+      type: object
+      properties:
+        uid:
+          type: string
+        account_id:
+          type: integer
+          format: int64
+        request_id:
+          type: string
+          description: Echoed request id
+        _links:
+          type: object
+          unevaluatedProperties: {}
+        _embedded:
+          $ref: '#/components/schemas/UnsortedCreatedEmbedded'
+    UnsortedDeclineRequest:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          description: User id on whose behalf the item is declined
+    UnsortedEmbeddedCreate:
+      type: object
+      properties:
+        leads:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeadCreate'
+          description: Create related entities together with unsorted (lead/contact/company)
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactCreate'
+        companies:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyCreate'
+    UnsortedFormCreateItem:
+      type: object
+      required:
+        - source_uid
+        - source_name
+        - metadata
+      properties:
+        request_id:
+          type: string
+          description: Your request id to match request items with response items
+        source_uid:
+          type: string
+          description: 'Your stable id of the source: site/form/widget/integration that sent the lead'
+        source_name:
+          type: string
+          description: Human-readable source name shown in amoCRM (e.g. "Website form", "Landing page")
+        pipeline_id:
+          type: integer
+          format: int64
+          description: Pipeline id to place the created lead into
+        created_at:
+          type: integer
+          format: int64
+          description: Unix timestamp (seconds) when the form entry was created
+        _embedded:
+          allOf:
+            - $ref: '#/components/schemas/UnsortedEmbeddedCreate'
+          description: Embedded entities (lead/contact/company)
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/FormMetadata'
+          description: Form metadata
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: Bearer
+servers:
+  - url: https://{subdomain}.amocrm.ru
+    description: amoCRM account server
+    variables:
+      subdomain:
+        default: ''
