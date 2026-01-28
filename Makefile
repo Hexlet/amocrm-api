@@ -1,4 +1,4 @@
-compile:
+compile-openapi:
 	pnpm exec tsp compile .
 
 publish:

@@ -30,7 +30,7 @@ targets:
 # `environments` are a map of the name of the environment (e.g. "sandbox",
 # "production") to the corresponding url to use.
 environments:
-  production: https://petstore3.swagger.io/api/v3
+  production: https://{subdomain}.amocrm.ru
 
 # `resources` define the structure and organization for your API, such as how
 # methods and models are grouped together and accessed. See the [configuration
@@ -38,54 +38,15 @@ environments:
 #
 # [configuration guide]: https://www.stainless.com/docs/guides/configure#resources
 resources:
-  pet:
-    # Configure the methods defined in this resource. Each key in the object is the
-    # name of the method and the value is either an endpoint (for example, `get /foo`)
-    # or an object with more detail.
-    #
-    # [reference]: https://www.stainless.com/docs/reference/config#method
-    # Configure the models--named types--defined in the resource. Each key in the
-    # object is the name of the model and the value is either the name of a schema in
-    # `#/components/schemas` or an object with more detail.
-    #
-    # [reference]: https://www.stainless.com/docs/reference/config#model
-    models:
-      pet: '#/components/schemas/Pet'
-    methods:
-      update: put /pet
-      create: post /pet
-      find_by_status: get /pet/findByStatus
-      find_by_tags: get /pet/findByTags
-      retrieve: get /pet/{petId}
-      update_with_form: post /pet/{petId}
-      delete: delete /pet/{petId}
-      upload_image: post /pet/{petId}/uploadImage
-
-  store:
-    methods:
-      list_inventory: get /store/inventory
-    # Subresources define resources that are nested within another for more powerful
-    # logical groupings, e.g. `cards.payments`.
+  v4:
     subresources:
-      order:
-        models:
-          order: '#/components/schemas/Order'
-        methods:
-          create: post /store/order
-          retrieve: get /store/order/{orderId}
-          delete: delete /store/order/{orderId}
-
-  user:
-    models:
-      user: '#/components/schemas/User'
-    methods:
-      create: post /user
-      create_with_list: post /user/createWithList
-      login: get /user/login
-      logout: get /user/logout
-      retrieve: get /user/{username}
-      update: put /user/{username}
-      delete: delete /user/{username}
+      leads:
+        subresources:
+          unsorted:
+            methods:
+              create_forms: post /api/v4/leads/unsorted/forms
+              accept: post /api/v4/leads/unsorted/{uid}/accept
+              decline: delete /api/v4/leads/unsorted/{uid}/decline
 
 settings:
   # All generated integration tests that hit the prism mock http server are marked
@@ -104,7 +65,7 @@ client_settings:
       type: string
       nullable: false
       auth:
-        security_scheme: api_key
+        security_scheme: BearerAuth
       read_env: AMOCRM_API_KEY
 
 # `readme` is used to configure the code snippets that will be rendered in the
@@ -114,9 +75,9 @@ readme:
   example_requests:
     default:
       type: request
-      endpoint: put /pet
+      endpoint: post /api/v4/leads/unsorted/forms
       params: {}
     headline:
       type: request
-      endpoint: put /pet
+      endpoint: post /api/v4/leads/unsorted/forms
       params: {}
