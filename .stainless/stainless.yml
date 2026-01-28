@@ -23,7 +23,7 @@ targets:
     # [docs]: https://www.stainless.com/docs/reference/editions
     edition: ruby.2025-10-08
     gem_name: amocrm
-    production_repo: Hexlet/amocrm
+    production_repo: Hexlet/amocrm-ruby
     publish:
       rubygems: true
 
