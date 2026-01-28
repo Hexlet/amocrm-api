@@ -6,7 +6,7 @@ using TypeSpec.Http;
 using TypeSpec.OpenAPI;
 
 @service(#{
-  title: "amoCRM Unsorted (Forms) API",
+  title: "amoCRM API",
 })
 @info(#{
   version: "0.1.0",
