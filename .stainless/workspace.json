@@ -3,9 +3,6 @@
   "openapi_spec": "../tsp-output/schema/openapi.yaml",
   "stainless_config": "stainless.yml",
   "targets": {
-    "cli": {
-      "output_path": "../sdks/amocrm-cli"
-    },
     "ruby": {
       "output_path": "../sdks/amocrm-ruby"
     }

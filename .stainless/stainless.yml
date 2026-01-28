@@ -26,11 +26,6 @@ targets:
     production_repo: Hexlet/amocrm
     publish:
       rubygems: true
-  cli:
-    edition: cli.2025-10-08
-    binary_name: amocrm
-    production_repo: null
-    skip: true
 
 # `environments` are a map of the name of the environment (e.g. "sandbox",
 # "production") to the corresponding url to use.
