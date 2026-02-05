@@ -3229,6 +3229,12 @@ paths:
           schema:
             type: integer
             format: int64
+        - name: with
+          in: query
+          required: false
+          schema:
+            type: string
+          explode: false
       responses:
         '200':
           description: The request has succeeded.
@@ -3268,6 +3274,56 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NoteUpdateById'
+  /api/v4/{entity_type}/notes/{id}/pin:
+    post:
+      operationId: EntityNotes_pin
+      description: Pin note by id.
+      parameters:
+        - name: entity_type
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/EntityLinkType'
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/EmptyResponse'
+                  - $ref: '#/components/schemas/Problem'
+  /api/v4/{entity_type}/notes/{id}/unpin:
+    post:
+      operationId: EntityNotes_unpin
+      description: Unpin note by id.
+      parameters:
+        - name: entity_type
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/EntityLinkType'
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/EmptyResponse'
+                  - $ref: '#/components/schemas/Problem'
   /api/v4/{entity_type}/tags:
     get:
       operationId: Tags_list
@@ -3606,6 +3662,38 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/NoteCreate'
+    patch:
+      operationId: EntityNotesByParent_updateByParent
+      description: Update notes for a specific entity (batch).
+      parameters:
+        - name: entity_type
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/EntityLinkType'
+        - name: entity_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/NoteCreateResponse'
+                  - $ref: '#/components/schemas/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NoteUpdateItem'
   /api/v4/{entity_type}/{entity_id}/notes/{note_id}:
     get:
       operationId: EntityNotesByParent_getByParentId
@@ -3628,6 +3716,12 @@ paths:
           schema:
             type: integer
             format: int64
+        - name: with
+          in: query
+          required: false
+          schema:
+            type: string
+          explode: false
       responses:
         '200':
           description: The request has succeeded.
@@ -6487,6 +6581,8 @@ components:
         account_id:
           type: integer
           format: int64
+        is_pinned:
+          type: boolean
         params:
           type: object
           unevaluatedProperties: {}
@@ -6512,12 +6608,17 @@ components:
         created_by:
           type: integer
           format: int64
+        responsible_user_id:
+          type: integer
+          format: int64
         updated_by:
           type: integer
           format: int64
         created_at:
           type: integer
           format: int64
+        is_need_to_trigger_digital_pipeline:
+          type: boolean
     NoteCreateResponse:
       type: object
       properties:
@@ -6542,6 +6643,9 @@ components:
           format: int64
         request_id:
           type: string
+        updated_at:
+          type: integer
+          format: int64
         _links:
           type: object
           unevaluatedProperties: {}

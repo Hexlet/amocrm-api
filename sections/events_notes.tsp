@@ -90,6 +90,7 @@ interface EntityNotes {
   getById(
     @path entity_type: EntityLinkType,
     @path id: int64,
+    @query with?: string,
   ): Note | Problem;
 
   /** Update note by id. */
@@ -100,6 +101,22 @@ interface EntityNotes {
     @path id: int64,
     @body body: NoteUpdateById,
   ): NoteCreateResponse | Problem;
+
+  /** Pin note by id. */
+  @post
+  @route("/{id}/pin")
+  pin(
+    @path entity_type: EntityLinkType,
+    @path id: int64,
+  ): EmptyResponse | Problem;
+
+  /** Unpin note by id. */
+  @post
+  @route("/{id}/unpin")
+  unpin(
+    @path entity_type: EntityLinkType,
+    @path id: int64,
+  ): EmptyResponse | Problem;
 }
 
 /** Methods for working with notes by parent entity. */
@@ -123,6 +140,14 @@ interface EntityNotesByParent {
     @body body: NoteCreate[],
   ): NoteCreateResponse | Problem;
 
+  /** Update notes for a specific entity (batch). */
+  @patch(#{ implicitOptionality: false })
+  updateByParent(
+    @path entity_type: EntityLinkType,
+    @path entity_id: int64,
+    @body body: NoteUpdateItem[],
+  ): NoteCreateResponse | Problem;
+
   /** Get note by id for a specific entity. */
   @get
   @route("/{note_id}")
@@ -130,6 +155,7 @@ interface EntityNotesByParent {
     @path entity_type: EntityLinkType,
     @path entity_id: int64,
     @path note_id: int64,
+    @query with?: string,
   ): Note | Problem;
 
   /** Update note by id for a specific entity. */
@@ -154,6 +180,7 @@ model Note {
   created_at?: int64;
   updated_at?: int64;
   account_id?: int64;
+  is_pinned?: boolean;
   params?: Record<unknown>;
   _links?: Record<unknown>;
 }
@@ -165,8 +192,10 @@ model NoteCreate {
   note_type: string;
   params?: Record<unknown>;
   created_by?: int64;
+  responsible_user_id?: int64;
   updated_by?: int64;
   created_at?: int64;
+  is_need_to_trigger_digital_pipeline?: boolean;
 }
 
 model NoteUpdateItem {
@@ -199,6 +228,7 @@ model NoteCreateResult {
   id?: int64;
   entity_id?: int64;
   request_id?: string;
+  updated_at?: int64;
   _links?: Record<unknown>;
 }
 
