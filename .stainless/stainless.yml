@@ -25,6 +25,9 @@ security_schemes:
     type: http
     scheme: bearer
 
+# Required by current Stainless config schema.
+# resources: {}
+
 # `targets` define the output targets and their customization options, such as
 # whether to emit the Node SDK and what its package name should be.
 targets:
