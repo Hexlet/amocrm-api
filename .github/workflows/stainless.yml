@@ -1,4 +1,4 @@
-name: Build SDKs for pull request
+name: Build SDKs
 
 on:
   pull_request:
@@ -6,10 +6,22 @@ on:
       - opened
       - synchronize
       - reopened
-      - closed
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Build mode"
+        required: true
+        default: preview
+        type: choice
+        options:
+          - preview
+          - merge
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref_name || github.run_id }}
   cancel-in-progress: true
 
 env:
@@ -19,7 +31,7 @@ env:
 
 jobs:
   preview:
-    if: github.event.action != 'closed'
+    if: github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'preview')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -39,7 +51,7 @@ jobs:
           oas_path: ${{ env.OAS_PATH }}
 
   merge:
-    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'merge')
     runs-on: ubuntu-latest
     permissions:
       contents: read
