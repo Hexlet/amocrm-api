@@ -14,6 +14,17 @@ organization:
   # Contact email for bug reports, questions, and support requests.
   contact: ''
 
+# Explicit auth override for Stainless codegen.
+# TypeSpec currently emits `scheme: Bearer`, and with that value Ruby SDK auth
+# wiring is not generated. We force lowercase `bearer` until upstream is fixed.
+security:
+  - BearerAuth: []
+
+security_schemes:
+  BearerAuth:
+    type: http
+    scheme: bearer
+
 # `targets` define the output targets and their customization options, such as
 # whether to emit the Node SDK and what its package name should be.
 targets:
