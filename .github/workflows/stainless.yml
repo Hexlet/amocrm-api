@@ -69,3 +69,4 @@ jobs:
           org: ${{ env.STAINLESS_ORG }}
           project: ${{ env.STAINLESS_PROJECT }}
           oas_path: ${{ env.OAS_PATH }}
+          commit_message: "Update SDK from OpenAPI spec"
