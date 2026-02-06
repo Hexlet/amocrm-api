@@ -9,14 +9,14 @@ namespace AmoCRM;
 interface Pipelines {
   /** Get pipelines list. */
   @get
-  list(): PipelineListResponse | Problem;
+  list(): JsonOrHal<PipelineListResponse | Problem>;
 
   /** Get pipeline by id. */
   @get
   @route("/{id}")
   getById(
     @path id: int64,
-  ): Pipeline | Problem;
+  ): JsonOrHal<Pipeline | Problem>;
 
   /** Create pipelines. */
   @post
@@ -55,7 +55,7 @@ interface PipelineStatuses {
     @path pipeline_id: int64,
     /** Expand related entities; comma-separated values (e.g. descriptions). */
     @query with?: string,
-  ): StatusListResponse | Problem;
+  ): JsonOrHal<StatusListResponse | Problem>;
 
   /** Get status by id. */
   @get
@@ -65,7 +65,7 @@ interface PipelineStatuses {
     @path id: int64,
     /** Expand related entities; comma-separated values (e.g. descriptions). */
     @query with?: string,
-  ): Status | Problem;
+  ): JsonOrHal<Status | Problem>;
 
   /** Create statuses. */
   @post

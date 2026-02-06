@@ -1,5 +1,15 @@
+using TypeSpec.Http;
+
 namespace AmoCRM;
 // API Reference: https://www.amocrm.ru/developers/content/crm_platform/api-reference
+
+alias JsonOrHal<T> = {
+  @header contentType: "application/json";
+  @body body: T;
+} | {
+  @header contentType: "application/hal+json";
+  @body body: T;
+};
 
 
 model Problem {

@@ -22,7 +22,7 @@ interface Leads {
     @query order?: Record<unknown>,
     /** Filtering parameters, see filters API */
     @query filter?: Record<unknown>,
-  ): LeadListResponse | Problem;
+  ): JsonOrHal<LeadListResponse | Problem>;
 
   /** Get a lead by id. */
   @get
@@ -31,7 +31,7 @@ interface Leads {
     @path id: int64,
     /** Expand related entities; comma-separated values */
     @query with?: string,
-  ): Lead | Problem;
+  ): JsonOrHal<Lead | Problem>;
 
   /** Create leads. */
   @post

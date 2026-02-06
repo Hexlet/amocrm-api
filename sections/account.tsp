@@ -12,7 +12,7 @@ interface Account {
   get(
     /** Additional data to include (comma-separated). */
     @query with?: string,
-  ): AccountInfo | Problem;
+  ): JsonOrHal<AccountInfo | Problem>;
 }
 
 model AmojoRights {

@@ -43,6 +43,7 @@ using TypeSpec.OpenAPI;
 @info(#{
   version: "0.1.0",
 })
+// `subdomain` is provided by SDK client settings (e.g. AMOCRM_SUBDOMAIN).
 @server(
   "https://{subdomain}.amocrm.ru",
   "amoCRM account server",

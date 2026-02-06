@@ -61,12 +61,17 @@ settings:
 # arguments (used for authentication), retry behavior, idempotency, etc.
 client_settings:
   opts:
-    api_key:
+    token:
       type: string
       nullable: false
       auth:
         security_scheme: BearerAuth
-      read_env: AMOCRM_API_KEY
+      read_env: AMOCRM_AUTH_TOKEN
+    subdomain:
+      type: string
+      nullable: false
+      server_variable: subdomain
+      read_env: AMOCRM_SUBDOMAIN
 
 # `readme` is used to configure the code snippets that will be rendered in the
 # README.md of various SDKs. In particular, you can change the `headline`

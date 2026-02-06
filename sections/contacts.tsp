@@ -22,7 +22,7 @@ interface Contacts {
     @query order?: Record<unknown>,
     /** Filtering parameters */
     @query filter?: Record<unknown>,
-  ): ContactListResponse | Problem;
+  ): JsonOrHal<ContactListResponse | Problem>;
 
   /** Get a contact by id. */
   @get
@@ -31,7 +31,7 @@ interface Contacts {
     @path id: int64,
     /** Expand related entities; comma-separated values */
     @query with?: string,
-  ): Contact | Problem;
+  ): JsonOrHal<Contact | Problem>;
 
   /** Create contacts. */
   @post
