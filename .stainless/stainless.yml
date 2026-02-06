@@ -43,9 +43,6 @@ targets:
 environments:
   production: https://{subdomain}.amocrm.ru
 
-# Leave resources empty to let Stainless infer full SDK surface from OpenAPI.
-resources: {}
-
 settings:
   # All generated integration tests that hit the prism mock http server are marked
   # as skipped. Removing this setting or setting it to false enables tests, but
