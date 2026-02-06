@@ -70,3 +70,8 @@ jobs:
           project: ${{ env.STAINLESS_PROJECT }}
           oas_path: ${{ env.OAS_PATH }}
           commit_message: "Update SDK from OpenAPI spec"
+          make_comment: false
+          base_sha: ${{ github.event.before || github.sha }}
+          base_ref: ${{ github.ref_name }}
+          head_sha: ${{ github.sha }}
+          merge_branch: preview/${{ github.ref_name }}
