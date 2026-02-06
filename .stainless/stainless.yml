@@ -43,22 +43,6 @@ targets:
 environments:
   production: https://{subdomain}.amocrm.ru
 
-# `resources` define the structure and organization for your API, such as how
-# methods and models are grouped together and accessed. See the [configuration
-# guide] for more information.
-#
-# [configuration guide]: https://www.stainless.com/docs/guides/configure#resources
-resources:
-  v4:
-    subresources:
-      leads:
-        subresources:
-          unsorted:
-            methods:
-              create_forms: post /api/v4/leads/unsorted/forms
-              accept: post /api/v4/leads/unsorted/{uid}/accept
-              decline: delete /api/v4/leads/unsorted/{uid}/decline
-
 settings:
   # All generated integration tests that hit the prism mock http server are marked
   # as skipped. Removing this setting or setting it to false enables tests, but
