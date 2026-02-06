@@ -6,6 +6,9 @@ namespace AmoCRM;
 alias JsonOrHal<T> = {
   @header contentType: "application/json";
   @body body: T;
+} | {
+  @header contentType: "application/hal+json";
+  @body body: T;
 };
 
 

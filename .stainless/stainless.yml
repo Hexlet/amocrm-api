@@ -26,7 +26,219 @@ security_schemes:
     scheme: bearer
 
 # Required by current Stainless config schema.
-# resources: {}
+resources:
+  account:
+    methods:
+      get: get /api/v4/account
+  calls:
+    methods:
+      create: post /api/v4/calls
+  catalog_elements:
+    methods:
+      create: post /api/v4/catalogs/{catalog_id}/elements
+      get_by_id: get /api/v4/catalogs/{catalog_id}/elements/{id}
+      list: get /api/v4/catalogs/{catalog_id}/elements
+      update: patch /api/v4/catalogs/{catalog_id}/elements
+      update_by_id: patch /api/v4/catalogs/{catalog_id}/elements/{id}
+  catalogs:
+    methods:
+      create: post /api/v4/catalogs
+      get_by_id: get /api/v4/catalogs/{id}
+      list: get /api/v4/catalogs
+      update: patch /api/v4/catalogs
+      update_by_id: patch /api/v4/catalogs/{id}
+  companies:
+    methods:
+      create: post /api/v4/companies
+      get_by_id: get /api/v4/companies/{id}
+      list: get /api/v4/companies
+      update: patch /api/v4/companies
+      update_by_id: patch /api/v4/companies/{id}
+  contact_chats:
+    methods:
+      link: post /api/v4/contacts/chats
+      list: get /api/v4/contacts/chats
+  contacts:
+    methods:
+      create: post /api/v4/contacts
+      get_by_id: get /api/v4/contacts/{id}
+      list: get /api/v4/contacts
+      update: patch /api/v4/contacts
+      update_by_id: patch /api/v4/contacts/{id}
+  custom_field_groups:
+    methods:
+      create: post /api/v4/{entity_type}/custom_fields/groups
+      delete_by_id: delete /api/v4/{entity_type}/custom_fields/groups/{id}
+      get_by_id: get /api/v4/{entity_type}/custom_fields/groups/{id}
+      list: get /api/v4/{entity_type}/custom_fields/groups
+      update_by_id: patch /api/v4/{entity_type}/custom_fields/groups/{id}
+  custom_fields:
+    methods:
+      create: post /api/v4/{entity_type}/custom_fields
+      delete_by_id: delete /api/v4/{entity_type}/custom_fields/{id}
+      get_by_id: get /api/v4/{entity_type}/custom_fields/{id}
+      list: get /api/v4/{entity_type}/custom_fields
+      update: patch /api/v4/{entity_type}/custom_fields
+      update_by_id: patch /api/v4/{entity_type}/custom_fields/{id}
+  customer_bonus_points:
+    methods:
+      change: post /api/v4/customers/{customer_id}/bonus_points
+  customer_segments:
+    methods:
+      create: post /api/v4/customers/segments
+      delete_by_id: delete /api/v4/customers/segments/{id}
+      get_by_id: get /api/v4/customers/segments/{id}
+      list: get /api/v4/customers/segments
+      update_by_id: patch /api/v4/customers/segments/{id}
+  customer_statuses:
+    methods:
+      create: post /api/v4/customers/statuses
+      delete_by_id: delete /api/v4/customers/statuses/{id}
+      get_by_id: get /api/v4/customers/statuses/{id}
+      list: get /api/v4/customers/statuses
+      update_by_id: patch /api/v4/customers/statuses/{id}
+  customer_transactions:
+    methods:
+      create: post /api/v4/customers/{customer_id}/transactions
+      delete_by_id: delete /api/v4/customers/{customer_id}/transactions/{transaction_id}
+      list: get /api/v4/customers/transactions
+      list_by_customer: get /api/v4/customers/{customer_id}/transactions
+  customers:
+    methods:
+      create: post /api/v4/customers
+      get_by_id: get /api/v4/customers/{id}
+      list: get /api/v4/customers
+      update: patch /api/v4/customers
+      update_by_id: patch /api/v4/customers/{id}
+  customers_mode:
+    methods:
+      set_mode: patch /api/v4/customers/mode
+  entity_followers:
+    methods:
+      add: post /api/v4/{entity_type}/{entity_id}/followers
+      list: get /api/v4/{entity_type}/{entity_id}/followers
+      remove: delete /api/v4/{entity_type}/{entity_id}/followers
+  entity_links:
+    methods:
+      link: post /api/v4/{entity_type}/link
+      link_by_entity: post /api/v4/{entity_type}/{entity_id}/link
+      list: get /api/v4/{entity_type}/links
+      list_by_entity: get /api/v4/{entity_type}/{entity_id}/links
+      unlink: post /api/v4/{entity_type}/unlink
+      unlink_by_entity: post /api/v4/{entity_type}/{entity_id}/unlink
+  entity_notes:
+    methods:
+      create: post /api/v4/{entity_type}/notes
+      get_by_id: get /api/v4/{entity_type}/notes/{id}
+      list: get /api/v4/{entity_type}/notes
+      pin: post /api/v4/{entity_type}/notes/{id}/pin
+      unpin: post /api/v4/{entity_type}/notes/{id}/unpin
+      update: patch /api/v4/{entity_type}/notes
+      update_by_id: patch /api/v4/{entity_type}/notes/{id}
+  entity_notes_by_parent:
+    methods:
+      create_by_parent: post /api/v4/{entity_type}/{entity_id}/notes
+      get_by_parent_id: get /api/v4/{entity_type}/{entity_id}/notes/{note_id}
+      list_by_parent: get /api/v4/{entity_type}/{entity_id}/notes
+      update_by_parent: patch /api/v4/{entity_type}/{entity_id}/notes
+      update_by_parent_id: patch /api/v4/{entity_type}/{entity_id}/notes/{note_id}
+  events:
+    methods:
+      get_by_id: get /api/v4/events/{id}
+      list: get /api/v4/events
+      list_types: get /api/v4/events/types
+  leads:
+    methods:
+      create: post /api/v4/leads
+      create_complex: post /api/v4/leads/complex
+      get_by_id: get /api/v4/leads/{id}
+      list: get /api/v4/leads
+      update: patch /api/v4/leads
+      update_by_id: patch /api/v4/leads/{id}
+  pipeline_statuses:
+    methods:
+      create: post /api/v4/leads/pipelines/{pipeline_id}/statuses
+      delete_by_id: delete /api/v4/leads/pipelines/{pipeline_id}/statuses/{id}
+      get_by_id: get /api/v4/leads/pipelines/{pipeline_id}/statuses/{id}
+      list: get /api/v4/leads/pipelines/{pipeline_id}/statuses
+      update: patch /api/v4/leads/pipelines/{pipeline_id}/statuses
+      update_by_id: patch /api/v4/leads/pipelines/{pipeline_id}/statuses/{id}
+  pipelines:
+    methods:
+      create: post /api/v4/leads/pipelines
+      delete_by_id: delete /api/v4/leads/pipelines/{id}
+      get_by_id: get /api/v4/leads/pipelines/{id}
+      list: get /api/v4/leads/pipelines
+      update: patch /api/v4/leads/pipelines
+      update_by_id: patch /api/v4/leads/pipelines/{id}
+  roles:
+    methods:
+      create: post /api/v4/roles
+      delete_by_id: delete /api/v4/roles/{id}
+      get_by_id: get /api/v4/roles/{id}
+      list: get /api/v4/roles
+      update_by_id: patch /api/v4/roles/{id}
+  salesbot:
+    methods:
+      run: post /api/v2/salesbot/run
+  short_links:
+    methods:
+      create: post /api/v4/short_links
+  sources:
+    methods:
+      create: post /api/v4/sources
+      delete: delete /api/v4/sources
+      delete_by_id: delete /api/v4/sources/{id}
+      get_by_id: get /api/v4/sources/{id}
+      list: get /api/v4/sources
+      update: patch /api/v4/sources
+      update_by_id: patch /api/v4/sources/{id}
+  tags:
+    methods:
+      create: post /api/v4/{entity_type}/tags
+      list: get /api/v4/{entity_type}/tags
+  talks:
+    methods:
+      close: post /api/v4/talks/{id}/close
+      get_by_id: get /api/v4/talks/{id}
+  tasks:
+    methods:
+      create: post /api/v4/tasks
+      get_by_id: get /api/v4/tasks/{id}
+      list: get /api/v4/tasks
+      update: patch /api/v4/tasks
+      update_by_id: patch /api/v4/tasks/{id}
+  unsorted_leads:
+    methods:
+      accept: post /api/v4/leads/unsorted/{uid}/accept
+      create_forms: post /api/v4/leads/unsorted/forms
+      decline: delete /api/v4/leads/unsorted/{uid}/decline
+  users:
+    methods:
+      create: post /api/v4/users
+      get_by_id: get /api/v4/users/{id}
+      list: get /api/v4/users
+  webhooks:
+    methods:
+      list: get /api/v4/webhooks
+      subscribe: post /api/v4/webhooks
+      unsubscribe: delete /api/v4/webhooks
+  website_buttons:
+    methods:
+      connect_online_chat: post /api/v4/website_buttons/{source_id}/online_chat
+      create: post /api/v4/website_buttons
+      get_by_source_id: get /api/v4/website_buttons/{source_id}
+      list: get /api/v4/website_buttons
+      update: patch /api/v4/website_buttons/{source_id}
+  widget_bot_continue:
+    methods:
+      continue: post /api/v4/{bot_type}/{bot_id}/continue/{continue_id}
+  widgets:
+    methods:
+      get_by_code: get /api/v4/widgets/{widget_code}
+      install: post /api/v4/widgets/{widget_code}
+      list: get /api/v4/widgets
+      uninstall: delete /api/v4/widgets/{widget_code}
 
 # `targets` define the output targets and their customization options, such as
 # whether to emit the Node SDK and what its package name should be.

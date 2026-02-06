@@ -47,6 +47,11 @@ paths:
                 anyOf:
                   - $ref: '#/components/schemas/AccountInfo'
                   - $ref: '#/components/schemas/Problem'
+            application/hal+json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/AccountInfo'
+                  - $ref: '#/components/schemas/Problem'
   /api/v4/calls:
     post:
       operationId: Calls_create
@@ -572,6 +577,11 @@ paths:
                 anyOf:
                   - $ref: '#/components/schemas/ContactListResponse'
                   - $ref: '#/components/schemas/Problem'
+            application/hal+json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/ContactListResponse'
+                  - $ref: '#/components/schemas/Problem'
     post:
       operationId: Contacts_create
       description: Create contacts.
@@ -679,6 +689,11 @@ paths:
           description: The request has succeeded.
           content:
             application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Contact'
+                  - $ref: '#/components/schemas/Problem'
+            application/hal+json:
               schema:
                 anyOf:
                   - $ref: '#/components/schemas/Contact'
@@ -1396,6 +1411,11 @@ paths:
                 anyOf:
                   - $ref: '#/components/schemas/LeadListResponse'
                   - $ref: '#/components/schemas/Problem'
+            application/hal+json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/LeadListResponse'
+                  - $ref: '#/components/schemas/Problem'
     post:
       operationId: Leads_create
       description: Create leads.
@@ -1474,6 +1494,11 @@ paths:
                 anyOf:
                   - $ref: '#/components/schemas/PipelineListResponse'
                   - $ref: '#/components/schemas/Problem'
+            application/hal+json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/PipelineListResponse'
+                  - $ref: '#/components/schemas/Problem'
     post:
       operationId: Pipelines_create
       description: Create pipelines.
@@ -1532,6 +1557,11 @@ paths:
           description: The request has succeeded.
           content:
             application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Pipeline'
+                  - $ref: '#/components/schemas/Problem'
+            application/hal+json:
               schema:
                 anyOf:
                   - $ref: '#/components/schemas/Pipeline'
@@ -1603,6 +1633,11 @@ paths:
           description: The request has succeeded.
           content:
             application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/StatusListResponse'
+                  - $ref: '#/components/schemas/Problem'
+            application/hal+json:
               schema:
                 anyOf:
                   - $ref: '#/components/schemas/StatusListResponse'
@@ -1690,6 +1725,11 @@ paths:
           description: The request has succeeded.
           content:
             application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Status'
+                  - $ref: '#/components/schemas/Problem'
+            application/hal+json:
               schema:
                 anyOf:
                   - $ref: '#/components/schemas/Status'
@@ -1842,6 +1882,11 @@ paths:
           description: The request has succeeded.
           content:
             application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Lead'
+                  - $ref: '#/components/schemas/Problem'
+            application/hal+json:
               schema:
                 anyOf:
                   - $ref: '#/components/schemas/Lead'
