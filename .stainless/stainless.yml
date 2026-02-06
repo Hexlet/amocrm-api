@@ -290,9 +290,761 @@ readme:
   example_requests:
     default:
       type: request
-      endpoint: post /api/v4/leads/unsorted/forms
+      endpoint: get /api/v4/account
       params: {}
     headline:
       type: request
+      endpoint: get /api/v4/leads
+      params: {}
+
+    # account
+    account__get:
+      type: request
+      endpoint: get /api/v4/account
+      params: {}
+
+    # calls
+    calls__create:
+      type: request
+      endpoint: post /api/v4/calls
+      params: {}
+
+    # catalog_elements
+    catalog_elements__create:
+      type: request
+      endpoint: post /api/v4/catalogs/{catalog_id}/elements
+      params:
+        catalog_id: 1
+    catalog_elements__get_by_id:
+      type: request
+      endpoint: get /api/v4/catalogs/{catalog_id}/elements/{id}
+      params:
+        catalog_id: 1
+        id: 1
+    catalog_elements__list:
+      type: request
+      endpoint: get /api/v4/catalogs/{catalog_id}/elements
+      params:
+        catalog_id: 1
+    catalog_elements__update:
+      type: request
+      endpoint: patch /api/v4/catalogs/{catalog_id}/elements
+      params:
+        catalog_id: 1
+    catalog_elements__update_by_id:
+      type: request
+      endpoint: patch /api/v4/catalogs/{catalog_id}/elements/{id}
+      params:
+        catalog_id: 1
+        id: 1
+
+    # catalogs
+    catalogs__create:
+      type: request
+      endpoint: post /api/v4/catalogs
+      params: {}
+    catalogs__get_by_id:
+      type: request
+      endpoint: get /api/v4/catalogs/{id}
+      params:
+        id: 1
+    catalogs__list:
+      type: request
+      endpoint: get /api/v4/catalogs
+      params: {}
+    catalogs__update:
+      type: request
+      endpoint: patch /api/v4/catalogs
+      params: {}
+    catalogs__update_by_id:
+      type: request
+      endpoint: patch /api/v4/catalogs/{id}
+      params:
+        id: 1
+
+    # companies
+    companies__create:
+      type: request
+      endpoint: post /api/v4/companies
+      params: {}
+    companies__get_by_id:
+      type: request
+      endpoint: get /api/v4/companies/{id}
+      params:
+        id: 1
+    companies__list:
+      type: request
+      endpoint: get /api/v4/companies
+      params: {}
+    companies__update:
+      type: request
+      endpoint: patch /api/v4/companies
+      params: {}
+    companies__update_by_id:
+      type: request
+      endpoint: patch /api/v4/companies/{id}
+      params:
+        id: 1
+
+    # contact_chats
+    contact_chats__link:
+      type: request
+      endpoint: post /api/v4/contacts/chats
+      params: {}
+    contact_chats__list:
+      type: request
+      endpoint: get /api/v4/contacts/chats
+      params: {}
+
+    # contacts
+    contacts__create:
+      type: request
+      endpoint: post /api/v4/contacts
+      params: {}
+    contacts__get_by_id:
+      type: request
+      endpoint: get /api/v4/contacts/{id}
+      params:
+        id: 1
+    contacts__list:
+      type: request
+      endpoint: get /api/v4/contacts
+      params: {}
+    contacts__update:
+      type: request
+      endpoint: patch /api/v4/contacts
+      params: {}
+    contacts__update_by_id:
+      type: request
+      endpoint: patch /api/v4/contacts/{id}
+      params:
+        id: 1
+
+    # custom_field_groups
+    custom_field_groups__create:
+      type: request
+      endpoint: post /api/v4/{entity_type}/custom_fields/groups
+      params:
+        entity_type: "example"
+    custom_field_groups__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/{entity_type}/custom_fields/groups/{id}
+      params:
+        entity_type: "example"
+        id: 1
+    custom_field_groups__get_by_id:
+      type: request
+      endpoint: get /api/v4/{entity_type}/custom_fields/groups/{id}
+      params:
+        entity_type: "example"
+        id: 1
+    custom_field_groups__list:
+      type: request
+      endpoint: get /api/v4/{entity_type}/custom_fields/groups
+      params:
+        entity_type: "example"
+    custom_field_groups__update_by_id:
+      type: request
+      endpoint: patch /api/v4/{entity_type}/custom_fields/groups/{id}
+      params:
+        entity_type: "example"
+        id: 1
+
+    # custom_fields
+    custom_fields__create:
+      type: request
+      endpoint: post /api/v4/{entity_type}/custom_fields
+      params:
+        entity_type: "example"
+    custom_fields__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/{entity_type}/custom_fields/{id}
+      params:
+        entity_type: "example"
+        id: 1
+    custom_fields__get_by_id:
+      type: request
+      endpoint: get /api/v4/{entity_type}/custom_fields/{id}
+      params:
+        entity_type: "example"
+        id: 1
+    custom_fields__list:
+      type: request
+      endpoint: get /api/v4/{entity_type}/custom_fields
+      params:
+        entity_type: "example"
+    custom_fields__update:
+      type: request
+      endpoint: patch /api/v4/{entity_type}/custom_fields
+      params:
+        entity_type: "example"
+    custom_fields__update_by_id:
+      type: request
+      endpoint: patch /api/v4/{entity_type}/custom_fields/{id}
+      params:
+        entity_type: "example"
+        id: 1
+
+    # customer_bonus_points
+    customer_bonus_points__change:
+      type: request
+      endpoint: post /api/v4/customers/{customer_id}/bonus_points
+      params:
+        customer_id: 1
+
+    # customer_segments
+    customer_segments__create:
+      type: request
+      endpoint: post /api/v4/customers/segments
+      params: {}
+    customer_segments__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/customers/segments/{id}
+      params:
+        id: 1
+    customer_segments__get_by_id:
+      type: request
+      endpoint: get /api/v4/customers/segments/{id}
+      params:
+        id: 1
+    customer_segments__list:
+      type: request
+      endpoint: get /api/v4/customers/segments
+      params: {}
+    customer_segments__update_by_id:
+      type: request
+      endpoint: patch /api/v4/customers/segments/{id}
+      params:
+        id: 1
+
+    # customer_statuses
+    customer_statuses__create:
+      type: request
+      endpoint: post /api/v4/customers/statuses
+      params: {}
+    customer_statuses__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/customers/statuses/{id}
+      params:
+        id: 1
+    customer_statuses__get_by_id:
+      type: request
+      endpoint: get /api/v4/customers/statuses/{id}
+      params:
+        id: 1
+    customer_statuses__list:
+      type: request
+      endpoint: get /api/v4/customers/statuses
+      params: {}
+    customer_statuses__update_by_id:
+      type: request
+      endpoint: patch /api/v4/customers/statuses/{id}
+      params:
+        id: 1
+
+    # customer_transactions
+    customer_transactions__create:
+      type: request
+      endpoint: post /api/v4/customers/{customer_id}/transactions
+      params:
+        customer_id: 1
+    customer_transactions__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/customers/{customer_id}/transactions/{transaction_id}
+      params:
+        customer_id: 1
+        transaction_id: 1
+    customer_transactions__list:
+      type: request
+      endpoint: get /api/v4/customers/transactions
+      params: {}
+    customer_transactions__list_by_customer:
+      type: request
+      endpoint: get /api/v4/customers/{customer_id}/transactions
+      params:
+        customer_id: 1
+
+    # customers
+    customers__create:
+      type: request
+      endpoint: post /api/v4/customers
+      params: {}
+    customers__get_by_id:
+      type: request
+      endpoint: get /api/v4/customers/{id}
+      params:
+        id: 1
+    customers__list:
+      type: request
+      endpoint: get /api/v4/customers
+      params: {}
+    customers__update:
+      type: request
+      endpoint: patch /api/v4/customers
+      params: {}
+    customers__update_by_id:
+      type: request
+      endpoint: patch /api/v4/customers/{id}
+      params:
+        id: 1
+
+    # customers_mode
+    customers_mode__set_mode:
+      type: request
+      endpoint: patch /api/v4/customers/mode
+      params: {}
+
+    # entity_followers
+    entity_followers__add:
+      type: request
+      endpoint: post /api/v4/{entity_type}/{entity_id}/followers
+      params:
+        entity_type: "example"
+        entity_id: 1
+    entity_followers__list:
+      type: request
+      endpoint: get /api/v4/{entity_type}/{entity_id}/followers
+      params:
+        entity_type: "example"
+        entity_id: 1
+    entity_followers__remove:
+      type: request
+      endpoint: delete /api/v4/{entity_type}/{entity_id}/followers
+      params:
+        entity_type: "example"
+        entity_id: 1
+
+    # entity_links
+    entity_links__link:
+      type: request
+      endpoint: post /api/v4/{entity_type}/link
+      params:
+        entity_type: "example"
+    entity_links__link_by_entity:
+      type: request
+      endpoint: post /api/v4/{entity_type}/{entity_id}/link
+      params:
+        entity_type: "example"
+        entity_id: 1
+    entity_links__list:
+      type: request
+      endpoint: get /api/v4/{entity_type}/links
+      params:
+        entity_type: "example"
+    entity_links__list_by_entity:
+      type: request
+      endpoint: get /api/v4/{entity_type}/{entity_id}/links
+      params:
+        entity_type: "example"
+        entity_id: 1
+    entity_links__unlink:
+      type: request
+      endpoint: post /api/v4/{entity_type}/unlink
+      params:
+        entity_type: "example"
+    entity_links__unlink_by_entity:
+      type: request
+      endpoint: post /api/v4/{entity_type}/{entity_id}/unlink
+      params:
+        entity_type: "example"
+        entity_id: 1
+
+    # entity_notes
+    entity_notes__create:
+      type: request
+      endpoint: post /api/v4/{entity_type}/notes
+      params:
+        entity_type: "example"
+    entity_notes__get_by_id:
+      type: request
+      endpoint: get /api/v4/{entity_type}/notes/{id}
+      params:
+        entity_type: "example"
+        id: 1
+    entity_notes__list:
+      type: request
+      endpoint: get /api/v4/{entity_type}/notes
+      params:
+        entity_type: "example"
+    entity_notes__pin:
+      type: request
+      endpoint: post /api/v4/{entity_type}/notes/{id}/pin
+      params:
+        entity_type: "example"
+        id: 1
+    entity_notes__unpin:
+      type: request
+      endpoint: post /api/v4/{entity_type}/notes/{id}/unpin
+      params:
+        entity_type: "example"
+        id: 1
+    entity_notes__update:
+      type: request
+      endpoint: patch /api/v4/{entity_type}/notes
+      params:
+        entity_type: "example"
+    entity_notes__update_by_id:
+      type: request
+      endpoint: patch /api/v4/{entity_type}/notes/{id}
+      params:
+        entity_type: "example"
+        id: 1
+
+    # entity_notes_by_parent
+    entity_notes_by_parent__create_by_parent:
+      type: request
+      endpoint: post /api/v4/{entity_type}/{entity_id}/notes
+      params:
+        entity_type: "example"
+        entity_id: 1
+    entity_notes_by_parent__get_by_parent_id:
+      type: request
+      endpoint: get /api/v4/{entity_type}/{entity_id}/notes/{note_id}
+      params:
+        entity_type: "example"
+        entity_id: 1
+        note_id: 1
+    entity_notes_by_parent__list_by_parent:
+      type: request
+      endpoint: get /api/v4/{entity_type}/{entity_id}/notes
+      params:
+        entity_type: "example"
+        entity_id: 1
+    entity_notes_by_parent__update_by_parent:
+      type: request
+      endpoint: patch /api/v4/{entity_type}/{entity_id}/notes
+      params:
+        entity_type: "example"
+        entity_id: 1
+    entity_notes_by_parent__update_by_parent_id:
+      type: request
+      endpoint: patch /api/v4/{entity_type}/{entity_id}/notes/{note_id}
+      params:
+        entity_type: "example"
+        entity_id: 1
+        note_id: 1
+
+    # events
+    events__get_by_id:
+      type: request
+      endpoint: get /api/v4/events/{id}
+      params:
+        id: 1
+    events__list:
+      type: request
+      endpoint: get /api/v4/events
+      params: {}
+    events__list_types:
+      type: request
+      endpoint: get /api/v4/events/types
+      params: {}
+
+    # leads
+    leads__create:
+      type: request
+      endpoint: post /api/v4/leads
+      params: {}
+    leads__create_complex:
+      type: request
+      endpoint: post /api/v4/leads/complex
+      params: {}
+    leads__get_by_id:
+      type: request
+      endpoint: get /api/v4/leads/{id}
+      params:
+        id: 1
+    leads__list:
+      type: request
+      endpoint: get /api/v4/leads
+      params: {}
+    leads__update:
+      type: request
+      endpoint: patch /api/v4/leads
+      params: {}
+    leads__update_by_id:
+      type: request
+      endpoint: patch /api/v4/leads/{id}
+      params:
+        id: 1
+
+    # pipeline_statuses
+    pipeline_statuses__create:
+      type: request
+      endpoint: post /api/v4/leads/pipelines/{pipeline_id}/statuses
+      params:
+        pipeline_id: 1
+    pipeline_statuses__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/leads/pipelines/{pipeline_id}/statuses/{id}
+      params:
+        pipeline_id: 1
+        id: 1
+    pipeline_statuses__get_by_id:
+      type: request
+      endpoint: get /api/v4/leads/pipelines/{pipeline_id}/statuses/{id}
+      params:
+        pipeline_id: 1
+        id: 1
+    pipeline_statuses__list:
+      type: request
+      endpoint: get /api/v4/leads/pipelines/{pipeline_id}/statuses
+      params:
+        pipeline_id: 1
+    pipeline_statuses__update:
+      type: request
+      endpoint: patch /api/v4/leads/pipelines/{pipeline_id}/statuses
+      params:
+        pipeline_id: 1
+    pipeline_statuses__update_by_id:
+      type: request
+      endpoint: patch /api/v4/leads/pipelines/{pipeline_id}/statuses/{id}
+      params:
+        pipeline_id: 1
+        id: 1
+
+    # pipelines
+    pipelines__create:
+      type: request
+      endpoint: post /api/v4/leads/pipelines
+      params: {}
+    pipelines__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/leads/pipelines/{id}
+      params:
+        id: 1
+    pipelines__get_by_id:
+      type: request
+      endpoint: get /api/v4/leads/pipelines/{id}
+      params:
+        id: 1
+    pipelines__list:
+      type: request
+      endpoint: get /api/v4/leads/pipelines
+      params: {}
+    pipelines__update:
+      type: request
+      endpoint: patch /api/v4/leads/pipelines
+      params: {}
+    pipelines__update_by_id:
+      type: request
+      endpoint: patch /api/v4/leads/pipelines/{id}
+      params:
+        id: 1
+
+    # roles
+    roles__create:
+      type: request
+      endpoint: post /api/v4/roles
+      params: {}
+    roles__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/roles/{id}
+      params:
+        id: 1
+    roles__get_by_id:
+      type: request
+      endpoint: get /api/v4/roles/{id}
+      params:
+        id: 1
+    roles__list:
+      type: request
+      endpoint: get /api/v4/roles
+      params: {}
+    roles__update_by_id:
+      type: request
+      endpoint: patch /api/v4/roles/{id}
+      params:
+        id: 1
+
+    # salesbot
+    salesbot__run:
+      type: request
+      endpoint: post /api/v2/salesbot/run
+      params: {}
+
+    # short_links
+    short_links__create:
+      type: request
+      endpoint: post /api/v4/short_links
+      params: {}
+
+    # sources
+    sources__create:
+      type: request
+      endpoint: post /api/v4/sources
+      params: {}
+    sources__delete:
+      type: request
+      endpoint: delete /api/v4/sources
+      params: {}
+    sources__delete_by_id:
+      type: request
+      endpoint: delete /api/v4/sources/{id}
+      params:
+        id: 1
+    sources__get_by_id:
+      type: request
+      endpoint: get /api/v4/sources/{id}
+      params:
+        id: 1
+    sources__list:
+      type: request
+      endpoint: get /api/v4/sources
+      params: {}
+    sources__update:
+      type: request
+      endpoint: patch /api/v4/sources
+      params: {}
+    sources__update_by_id:
+      type: request
+      endpoint: patch /api/v4/sources/{id}
+      params:
+        id: 1
+
+    # tags
+    tags__create:
+      type: request
+      endpoint: post /api/v4/{entity_type}/tags
+      params:
+        entity_type: "example"
+    tags__list:
+      type: request
+      endpoint: get /api/v4/{entity_type}/tags
+      params:
+        entity_type: "example"
+
+    # talks
+    talks__close:
+      type: request
+      endpoint: post /api/v4/talks/{id}/close
+      params:
+        id: 1
+    talks__get_by_id:
+      type: request
+      endpoint: get /api/v4/talks/{id}
+      params:
+        id: 1
+
+    # tasks
+    tasks__create:
+      type: request
+      endpoint: post /api/v4/tasks
+      params: {}
+    tasks__get_by_id:
+      type: request
+      endpoint: get /api/v4/tasks/{id}
+      params:
+        id: 1
+    tasks__list:
+      type: request
+      endpoint: get /api/v4/tasks
+      params: {}
+    tasks__update:
+      type: request
+      endpoint: patch /api/v4/tasks
+      params: {}
+    tasks__update_by_id:
+      type: request
+      endpoint: patch /api/v4/tasks/{id}
+      params:
+        id: 1
+
+    # unsorted_leads
+    unsorted_leads__accept:
+      type: request
+      endpoint: post /api/v4/leads/unsorted/{uid}/accept
+      params:
+        uid: "example"
+    unsorted_leads__create_forms:
+      type: request
       endpoint: post /api/v4/leads/unsorted/forms
       params: {}
+    unsorted_leads__decline:
+      type: request
+      endpoint: delete /api/v4/leads/unsorted/{uid}/decline
+      params:
+        uid: "example"
+
+    # users
+    users__create:
+      type: request
+      endpoint: post /api/v4/users
+      params: {}
+    users__get_by_id:
+      type: request
+      endpoint: get /api/v4/users/{id}
+      params:
+        id: 1
+    users__list:
+      type: request
+      endpoint: get /api/v4/users
+      params: {}
+
+    # webhooks
+    webhooks__list:
+      type: request
+      endpoint: get /api/v4/webhooks
+      params: {}
+    webhooks__subscribe:
+      type: request
+      endpoint: post /api/v4/webhooks
+      params: {}
+    webhooks__unsubscribe:
+      type: request
+      endpoint: delete /api/v4/webhooks
+      params: {}
+
+    # website_buttons
+    website_buttons__connect_online_chat:
+      type: request
+      endpoint: post /api/v4/website_buttons/{source_id}/online_chat
+      params:
+        source_id: 1
+    website_buttons__create:
+      type: request
+      endpoint: post /api/v4/website_buttons
+      params: {}
+    website_buttons__get_by_source_id:
+      type: request
+      endpoint: get /api/v4/website_buttons/{source_id}
+      params:
+        source_id: 1
+    website_buttons__list:
+      type: request
+      endpoint: get /api/v4/website_buttons
+      params: {}
+    website_buttons__update:
+      type: request
+      endpoint: patch /api/v4/website_buttons/{source_id}
+      params:
+        source_id: 1
+
+    # widget_bot_continue
+    widget_bot_continue__continue:
+      type: request
+      endpoint: post /api/v4/{bot_type}/{bot_id}/continue/{continue_id}
+      params:
+        bot_type: "example"
+        bot_id: 1
+        continue_id: 1
+
+    # widgets
+    widgets__get_by_code:
+      type: request
+      endpoint: get /api/v4/widgets/{widget_code}
+      params:
+        widget_code: "example"
+    widgets__install:
+      type: request
+      endpoint: post /api/v4/widgets/{widget_code}
+      params:
+        widget_code: "example"
+    widgets__list:
+      type: request
+      endpoint: get /api/v4/widgets
+      params: {}
+    widgets__uninstall:
+      type: request
+      endpoint: delete /api/v4/widgets/{widget_code}
+      params:
+        widget_code: "example"

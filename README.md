@@ -1,5 +1,5 @@
 # amocrm-api
 
-Openapi Spec for AmoCRM
+OpenAPI spec for AmoCRM.
 
-https://www.amocrm.ru/developers/content/crm_platform/api-reference
+API reference: https://www.amocrm.ru/developers/content/crm_platform/api-reference

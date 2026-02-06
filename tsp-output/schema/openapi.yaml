@@ -3811,7 +3811,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NoteUpdateById'
+              $ref: '#/components/schemas/NoteUpdateByParentId'
   /api/v4/{entity_type}/{entity_id}/unlink:
     post:
       operationId: EntityLinks_unlinkByEntity
@@ -6716,6 +6716,20 @@ components:
         entity_id:
           type: integer
           format: int64
+        note_type:
+          type: string
+        params:
+          type: object
+          unevaluatedProperties: {}
+        updated_by:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+    NoteUpdateByParentId:
+      type: object
+      properties:
         note_type:
           type: string
         params:

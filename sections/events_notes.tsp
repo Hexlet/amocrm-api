@@ -165,7 +165,7 @@ interface EntityNotesByParent {
     @path entity_type: EntityLinkType,
     @path entity_id: int64,
     @path note_id: int64,
-    @body body: NoteUpdateById,
+    @body body: NoteUpdateByParentId,
   ): NoteCreateResponse | Problem;
 }
 
@@ -210,6 +210,13 @@ model NoteUpdateItem {
 
 model NoteUpdateById {
   entity_id?: int64;
+  note_type?: string;
+  params?: Record<unknown>;
+  updated_by?: int64;
+  updated_at?: int64;
+}
+
+model NoteUpdateByParentId {
   note_type?: string;
   params?: Record<unknown>;
   updated_by?: int64;

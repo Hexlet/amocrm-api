@@ -16,13 +16,14 @@
 - `make compile-openapi` runs `pnpm exec tsp compile .` to generate `tsp-output/schema/openapi.yaml`.
 - `make update` updates dependencies (`ncu -u` + `pnpm update`) — use sparingly and verify generated output.
 - `make publish` triggers the `stl` publish flow for the generated spec (requires the `stl` CLI and credentials).
-- `make stl-build-ruby` triggers a non-interactive Stainless Ruby SDK build from local `tsp-output/schema/openapi.yaml` and `.stainless/stainless.yml`.
-- `make stl-build-ruby-pull` triggers a local interactive Stainless Ruby SDK build and pulls generated Ruby changes (use from a TTY).
+- `make build-ruby` runs a Stainless Ruby SDK build using spec/config from `.stainless/stainless.yml`.
+- `make build-ruby-pull` runs the same build and pulls generated Ruby changes.
+- `make build-diagnostics BUILD_ID=bui_...` shows Stainless diagnostics for a build.
 
 ### Local Ruby SDK Verification Flow
 
 - Run `make compile-openapi`.
-- Run `make stl-build-ruby` (or `make stl-build-ruby-pull` in an interactive shell).
+- Run `make build-ruby` (or `make build-ruby-pull`).
 - Verify generated `amocrm-ruby` includes:
   - `token`/`subdomain` client args (`AMOCRM_AUTH_TOKEN`, `AMOCRM_SUBDOMAIN`).
   - `Authorization: Bearer ...` auth header wiring in `client.rb`.

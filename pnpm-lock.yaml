@@ -23,6 +23,10 @@ importers:
       '@typespec/rest':
         specifier: latest
         version: 0.78.0(@typespec/compiler@1.8.0)(@typespec/http@1.8.0(@typespec/compiler@1.8.0))
+    devDependencies:
+      npm-check-updates:
+        specifier: ^19.3.2
+        version: 19.3.2
 
 packages:
 
@@ -437,6 +441,11 @@ packages:
   mute-stream@3.0.0:
     resolution: {integrity: sha512-dkEJPVvun4FryqBmZ5KhDo0K9iDXAwn08tMLDinNdRBNPcYEDiWYysLcc6k3mjTMlbP9KyylvRpd4wFtwrT9rw==}
     engines: {node: ^20.17.0 || >=22.9.0}
+
+  npm-check-updates@19.3.2:
+    resolution: {integrity: sha512-9rr3z7znFjCSuaFxHGTFR2ZBOvLWaJcpLKmIquoTbDBNrwAGiHhv4MZyty6EJ9Xo/aMn35+2ISPSMgWIXx5Xkg==}
+    engines: {node: '>=20.0.0', npm: '>=8.12.1'}
+    hasBin: true
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -877,6 +886,8 @@ snapshots:
   mustache@4.2.0: {}
 
   mute-stream@3.0.0: {}
+
+  npm-check-updates@19.3.2: {}
 
   picocolors@1.1.1: {}
 

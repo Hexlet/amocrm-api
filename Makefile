@@ -1,7 +1,6 @@
-STL_PROJECT ?= amocrm
-STL_BRANCH ?= main
+BUILD_ID ?=
 
-.PHONY: setup update compile-openapi publish stl-build-ruby stl-build-ruby-pull
+.PHONY: setup update compile-openapi publish build build-ruby build-ruby-pull build-diagnostics
 
 setup:
 	pnpm install
@@ -16,10 +15,15 @@ compile-openapi:
 publish:
 	stl builds create --branch main # --pull # --allow-empty 
 
-# Non-interactive build trigger for Ruby SDK generation.
-stl-build-ruby:
-	stl builds create --project $(STL_PROJECT) --branch $(STL_BRANCH) --target ruby --oas tsp-output/schema/openapi.yaml --config .stainless/stainless.yml --allow-empty --wait=false
+build:
+	stl builds create --branch main
 
-# Interactive local build + pull of generated Ruby SDK changes.
-stl-build-ruby-pull:
-	stl builds create --project $(STL_PROJECT) --branch $(STL_BRANCH) --target ruby --oas tsp-output/schema/openapi.yaml --config .stainless/stainless.yml --allow-empty --pull
+build-ruby:
+	stl builds create --branch main --target ruby
+
+build-ruby-pull:
+	stl builds create --branch main --target ruby --pull
+
+build-diagnostics:
+	test -n "$(BUILD_ID)" || (echo "Usage: make build-diagnostics BUILD_ID=bui_..." && exit 1)
+	stl builds:diagnostics list --build-id $(BUILD_ID)
