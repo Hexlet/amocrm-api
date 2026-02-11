@@ -4,11 +4,11 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@typespec/compiler": "latest",
-    "@typespec/http": "latest",
-    "@typespec/openapi": "latest",
-    "@typespec/openapi3": "latest",
-    "@typespec/rest": "latest"
+    "@typespec/compiler": "1.9.0",
+    "@typespec/http": "1.9.0",
+    "@typespec/openapi": "1.9.0",
+    "@typespec/openapi3": "1.9.0",
+    "@typespec/rest": "0.79.0"
   },
   "devDependencies": {
     "npm-check-updates": "^19.3.2"
