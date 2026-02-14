@@ -10,7 +10,7 @@ organization:
   # and headings.
   name: amocrm
   # Link to your API documentation.
-  docs: ''
+  docs: https://www.amocrm.ru/developers/content/crm_platform/api-reference
   # Contact email for bug reports, questions, and support requests.
   contact: ''
 
