@@ -96,7 +96,7 @@ interface UnsortedLeads {
   @route("/forms")
   createForms(
     @body body: UnsortedFormCreateItem[],
-  ): UnsortedCreateResponse | Problem;
+  ): JsonOrHal<UnsortedCreateResponse> | Problem;
 
   @post
   @route("/{uid}/accept")
