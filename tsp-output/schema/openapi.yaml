@@ -15,9 +15,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/SalesbotRunResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/SalesbotRunResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -44,14 +48,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/AccountInfo'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/AccountInfo'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/AccountInfo'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/AccountInfo'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/calls:
     post:
       operationId: Calls_create
@@ -63,9 +69,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CallCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CallCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -99,9 +109,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Catalogs_create
       description: Create catalogs.
@@ -112,9 +126,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -133,9 +151,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -191,9 +213,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogElementListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogElementListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: CatalogElements_create
       description: Create catalog elements.
@@ -210,9 +236,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogElementCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogElementCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -237,9 +267,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogElementUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogElementUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -278,9 +312,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogElement'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogElement'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: CatalogElements_updateById
       description: Update catalog element by id.
@@ -303,9 +341,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogElementUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogElementUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -329,9 +371,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Catalog'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Catalog'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Catalogs_updateById
       description: Update catalog by id.
@@ -348,9 +394,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CatalogUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CatalogUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -417,9 +467,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CompanyListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CompanyListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Companies_create
       description: Create companies.
@@ -430,9 +484,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CompanyCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CompanyCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -451,9 +509,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CompanyUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CompanyUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -486,9 +548,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Company'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Company'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Companies_updateById
       description: Update a company by id.
@@ -505,9 +571,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CompanyUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CompanyUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -574,14 +644,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/ContactListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/ContactListResponse'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/ContactListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/ContactListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Contacts_create
       description: Create contacts.
@@ -592,9 +664,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/ContactCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/ContactCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -613,9 +689,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/ContactUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/ContactUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -642,9 +722,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/ContactChatLinksResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/ContactChatLinksResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: ContactChats_link
       description: Link chats to contacts.
@@ -655,9 +739,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/ContactChatLinksResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/ContactChatLinksResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -690,14 +778,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Contact'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Contact'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Contact'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Contact'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Contacts_updateById
       description: Update a contact by id.
@@ -714,9 +804,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/ContactUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/ContactUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -778,9 +872,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Customers_create
       description: Create customers.
@@ -791,9 +889,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -812,9 +914,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -834,9 +940,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerModeResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerModeResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -854,9 +964,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerSegmentListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerSegmentListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: CustomerSegments_create
       description: Create segments.
@@ -867,9 +981,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerSegmentCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerSegmentCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -895,9 +1013,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerSegment'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerSegment'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: CustomerSegments_updateById
       description: Update a segment by id.
@@ -914,10 +1036,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -940,10 +1066,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/customers/statuses:
     get:
       operationId: CustomerStatuses_list
@@ -955,9 +1085,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerStatusListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerStatusListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: CustomerStatuses_create
       description: Create statuses.
@@ -968,9 +1102,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerStatusCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerStatusCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -996,9 +1134,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerStatus'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerStatus'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: CustomerStatuses_updateById
       description: Update a status by id.
@@ -1015,10 +1157,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1041,10 +1187,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/customers/transactions:
     get:
       operationId: CustomerTransactions_list
@@ -1077,9 +1227,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerTransactionListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerTransactionListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/customers/{customer_id}/bonus_points:
     post:
       operationId: CustomerBonusPoints_change
@@ -1097,9 +1251,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerBonusPointsResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerBonusPointsResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1146,9 +1304,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerTransactionListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerTransactionListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: CustomerTransactions_create
       description: Create transactions for a customer.
@@ -1171,9 +1333,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerTransactionCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerTransactionCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1205,10 +1371,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/customers/{id}:
     get:
       operationId: Customers_getById
@@ -1233,9 +1403,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Customer'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Customer'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Customers_updateById
       description: Update a customer by id.
@@ -1252,9 +1426,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomerUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomerUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1299,9 +1477,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EventListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EventListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/events/types:
     get:
       operationId: Events_listTypes
@@ -1319,9 +1501,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EventTypesResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EventTypesResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/events/{id}:
     get:
       operationId: Events_getById
@@ -1345,9 +1531,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Event'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Event'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/leads:
     get:
       operationId: Leads_list
@@ -1408,14 +1598,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/LeadListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/LeadListResponse'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/LeadListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/LeadListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Leads_create
       description: Create leads.
@@ -1426,9 +1618,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/LeadCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/LeadCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1447,9 +1643,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/LeadUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/LeadUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1469,9 +1669,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/LeadComplexCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/LeadComplexCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1491,14 +1695,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/PipelineListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/PipelineListResponse'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/PipelineListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/PipelineListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Pipelines_create
       description: Create pipelines.
@@ -1509,9 +1715,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/PipelineCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/PipelineCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1530,9 +1740,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/PipelineUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/PipelineUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1558,14 +1772,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Pipeline'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Pipeline'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Pipeline'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Pipeline'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Pipelines_updateById
       description: Update pipeline by id.
@@ -1582,9 +1798,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/PipelineUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/PipelineUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1607,9 +1827,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/leads/pipelines/{pipeline_id}/statuses:
     get:
       operationId: PipelineStatuses_list
@@ -1634,14 +1858,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/StatusListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/StatusListResponse'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/StatusListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/StatusListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: PipelineStatuses_create
       description: Create statuses.
@@ -1658,9 +1884,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/StatusCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/StatusCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1685,9 +1915,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/StatusUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/StatusUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1726,14 +1960,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Status'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Status'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Status'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Status'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: PipelineStatuses_updateById
       description: Update status by id.
@@ -1756,9 +1992,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/StatusUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/StatusUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1787,9 +2027,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/leads/unsorted/forms:
     post:
       operationId: UnsortedLeads_createForms
@@ -1800,9 +2044,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/UnsortedCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/UnsortedCreateResponse'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/UnsortedCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1826,9 +2077,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/UnsortedAcceptResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/UnsortedAcceptResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: false
         content:
@@ -1850,9 +2105,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/UnsortedAcceptResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/UnsortedAcceptResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: false
         content:
@@ -1883,14 +2142,16 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Lead'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Lead'
             application/hal+json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Lead'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Lead'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Leads_updateById
       description: Update a lead by id.
@@ -1907,9 +2168,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/LeadUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/LeadUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1947,9 +2212,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/RoleListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/RoleListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Roles_create
       description: Create roles (batch).
@@ -1960,9 +2229,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/RoleCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/RoleCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -1994,9 +2267,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Role'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Role'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Roles_updateById
       description: Update role by id.
@@ -2013,9 +2290,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Role'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Role'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2038,9 +2319,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/short_links:
     post:
       operationId: ShortLinks_create
@@ -2052,9 +2337,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/ShortLinkCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/ShortLinkCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2092,9 +2381,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/SourceListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/SourceListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Sources_create
       description: Create sources (batch).
@@ -2105,9 +2398,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/SourceCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/SourceCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2126,9 +2423,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/SourceUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/SourceUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2147,9 +2448,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2175,9 +2480,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Source'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Source'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Sources_updateById
       description: Update source by id.
@@ -2194,9 +2503,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/SourceUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/SourceUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2219,9 +2532,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/talks/{id}:
     get:
       operationId: Talks_getById
@@ -2239,9 +2556,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Talk'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Talk'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/talks/{id}/close:
     post:
       operationId: Talks_close
@@ -2259,9 +2580,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2321,9 +2646,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/TaskListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/TaskListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Tasks_create
       description: Create tasks.
@@ -2334,9 +2663,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/TaskCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/TaskCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2355,9 +2688,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/TaskUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/TaskUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2383,9 +2720,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Task'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Task'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: Tasks_updateById
       description: Update a task by id.
@@ -2402,9 +2743,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/TaskUpdateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/TaskUpdateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2442,9 +2787,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/UserListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/UserListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Users_create
       description: Create users (batch).
@@ -2455,9 +2804,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/UserCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/UserCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2489,9 +2842,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/User'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/User'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/webhooks:
     get:
       operationId: Webhooks_list
@@ -2512,9 +2869,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/WebhookListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/WebhookListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Webhooks_subscribe
       description: Subscribe to webhook events.
@@ -2525,9 +2886,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Webhook'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Webhook'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2544,9 +2909,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2584,9 +2953,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/WebsiteButtonListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/WebsiteButtonListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: WebsiteButtons_create
       description: Create CRM Plugin.
@@ -2597,9 +2970,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/WebsiteButtonCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/WebsiteButtonCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2629,9 +3006,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/WebsiteButton'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/WebsiteButton'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: WebsiteButtons_update
       description: Update CRM Plugin trusted domains.
@@ -2648,9 +3029,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/WebsiteButton'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/WebsiteButton'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2674,9 +3059,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/widgets:
     get:
       operationId: Widgets_list
@@ -2702,9 +3091,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/WidgetListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/WidgetListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/widgets/{widget_code}:
     get:
       operationId: Widgets_getByCode
@@ -2721,9 +3114,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Widget'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Widget'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Widgets_install
       description: Install widget in account.
@@ -2739,9 +3136,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Widget'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Widget'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2764,9 +3165,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/{bot_type}/{bot_id}/continue/{continue_id}:
     post:
       operationId: WidgetBotContinue_continue
@@ -2797,9 +3202,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2836,9 +3245,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomFieldListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomFieldListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: CustomFields_create
       description: Create custom fields.
@@ -2854,9 +3267,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomFieldCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomFieldCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2880,10 +3297,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2922,9 +3343,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomFieldGroupListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomFieldGroupListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: CustomFieldGroups_create
       description: Create custom field groups.
@@ -2940,9 +3365,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomFieldGroupCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomFieldGroupCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -2973,9 +3402,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomFieldGroup'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomFieldGroup'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: CustomFieldGroups_updateById
       description: Update a custom field group by id.
@@ -2997,10 +3430,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3028,10 +3465,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/{entity_type}/custom_fields/{id}:
     get:
       operationId: CustomFields_getById
@@ -3054,9 +3495,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/CustomField'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/CustomField'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: CustomFields_updateById
       description: Update a custom field by id.
@@ -3078,10 +3523,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3109,10 +3558,14 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    unevaluatedProperties: {}
-                  - $ref: '#/components/schemas/Problem'
+                type: object
+                unevaluatedProperties: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/{entity_type}/link:
     post:
       operationId: EntityLinks_link
@@ -3129,9 +3582,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3163,9 +3620,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EntityLinksResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EntityLinksResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/{entity_type}/notes:
     get:
       operationId: EntityNotes_list
@@ -3203,9 +3664,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/NoteListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/NoteListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: EntityNotes_create
       description: Create notes for entity type.
@@ -3221,9 +3686,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/NoteCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/NoteCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3247,9 +3716,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/NoteCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/NoteCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3286,9 +3759,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Note'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Note'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: EntityNotes_updateById
       description: Update note by id.
@@ -3310,9 +3787,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/NoteCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/NoteCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3341,9 +3822,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/{entity_type}/notes/{id}/unpin:
     post:
       operationId: EntityNotes_unpin
@@ -3366,9 +3851,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/{entity_type}/tags:
     get:
       operationId: Tags_list
@@ -3412,9 +3901,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/TagListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/TagListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: Tags_create
       description: Create tags.
@@ -3430,9 +3923,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/TagCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/TagCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3457,9 +3954,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3504,9 +4005,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EntityFollowerListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EntityFollowerListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: EntityFollowers_add
       description: Add followers.
@@ -3528,9 +4033,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EntityFollowerCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EntityFollowerCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3560,9 +4069,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3593,9 +4106,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3626,9 +4143,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EntityLinksResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EntityLinksResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/v4/{entity_type}/{entity_id}/notes:
     get:
       operationId: EntityNotesByParent_listByParent
@@ -3672,9 +4193,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/NoteListResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/NoteListResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     post:
       operationId: EntityNotesByParent_createByParent
       description: Create notes for a specific entity.
@@ -3696,9 +4221,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/NoteCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/NoteCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3728,9 +4257,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/NoteCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/NoteCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3773,9 +4306,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Note'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/Note'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
     patch:
       operationId: EntityNotesByParent_updateByParentId
       description: Update note by id for a specific entity.
@@ -3803,9 +4340,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/NoteCreateResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/NoteCreateResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -3834,9 +4375,13 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - $ref: '#/components/schemas/EmptyResponse'
-                  - $ref: '#/components/schemas/Problem'
+                $ref: '#/components/schemas/EmptyResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
       requestBody:
         required: true
         content:
@@ -6922,7 +7467,7 @@ components:
         _links:
           type: object
           unevaluatedProperties: {}
-    Problem:
+    ProblemDetails:
       type: object
       properties:
         title:

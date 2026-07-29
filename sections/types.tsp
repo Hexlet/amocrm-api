@@ -12,11 +12,17 @@ alias JsonOrHal<T> = {
 };
 
 
-model Problem {
+model ProblemDetails {
   title?: string;
   status?: int32;
   detail?: string;
   type?: string;
+}
+
+@error
+model Problem {
+  @header contentType: "application/problem+json";
+  @body body: ProblemDetails;
 }
 
 model Tag {
