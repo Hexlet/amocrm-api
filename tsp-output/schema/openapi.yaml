@@ -7149,7 +7149,7 @@ components:
           type: integer
           format: int64
         note_type:
-          type: string
+          $ref: '#/components/schemas/NoteType'
         responsible_user_id:
           type: integer
           format: int64
@@ -7174,8 +7174,7 @@ components:
         is_pinned:
           type: boolean
         params:
-          type: object
-          unevaluatedProperties: {}
+          $ref: '#/components/schemas/NoteParams'
         _links:
           type: object
           unevaluatedProperties: {}
@@ -7191,10 +7190,9 @@ components:
           type: integer
           format: int64
         note_type:
-          type: string
+          $ref: '#/components/schemas/NoteType'
         params:
-          type: object
-          unevaluatedProperties: {}
+          $ref: '#/components/schemas/NoteParams'
         created_by:
           type: integer
           format: int64
@@ -7255,6 +7253,139 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Note'
+    NoteParams:
+      anyOf:
+        - $ref: '#/components/schemas/NoteParamsCall'
+        - $ref: '#/components/schemas/NoteParamsGeolocation'
+        - $ref: '#/components/schemas/NoteParamsAttachment'
+        - $ref: '#/components/schemas/NoteParamsMessageCashier'
+        - $ref: '#/components/schemas/NoteParamsServiceMessage'
+        - $ref: '#/components/schemas/NoteParamsSms'
+        - $ref: '#/components/schemas/NoteParamsCommon'
+      description: |-
+        Параметры примечания: состав зависит от `note_type`. Варианты — от самого специфичного
+        к общему, дискриминатора внутри params нет.
+    NoteParamsAttachment:
+      type: object
+      required:
+        - file_uuid
+        - file_name
+      properties:
+        version_uuid:
+          type: string
+          description: Версия файла; без неё берётся последняя
+        file_uuid:
+          type: string
+        file_name:
+          type: string
+          description: Название файла, которое отображается в примечании
+      description: attachment
+    NoteParamsCall:
+      type: object
+      required:
+        - uniq
+        - duration
+        - source
+        - link
+        - phone
+        - call_responsible
+      properties:
+        uniq:
+          type: string
+        duration:
+          type: integer
+          format: int32
+          description: Длительность звонка в секундах
+        source:
+          type: string
+        link:
+          type: string
+          description: Ссылка на запись звонка
+        phone:
+          type: string
+        call_responsible:
+          anyOf:
+            - type: string
+            - type: integer
+              format: int64
+          description: Имя ответственного или ID пользователя
+      description: call_in, call_out
+    NoteParamsCommon:
+      type: object
+      required:
+        - text
+      properties:
+        text:
+          type: string
+      description: common
+    NoteParamsGeolocation:
+      type: object
+      required:
+        - text
+        - address
+        - longitude
+        - latitude
+      properties:
+        text:
+          type: string
+        address:
+          type: string
+        longitude:
+          type: string
+        latitude:
+          type: string
+      description: geolocation
+    NoteParamsMessageCashier:
+      type: object
+      required:
+        - status
+        - text
+      properties:
+        status:
+          type: string
+          enum:
+            - created
+            - shown
+            - canceled
+        text:
+          type: string
+      description: message_cashier
+    NoteParamsServiceMessage:
+      type: object
+      required:
+        - service
+        - text
+      properties:
+        service:
+          type: string
+        text:
+          type: string
+      description: service_message, extended_service_message
+    NoteParamsSms:
+      type: object
+      required:
+        - text
+        - phone
+      properties:
+        text:
+          type: string
+        phone:
+          type: string
+      description: sms_in, sms_out
+    NoteType:
+      type: string
+      enum:
+        - common
+        - call_in
+        - call_out
+        - service_message
+        - message_cashier
+        - geolocation
+        - sms_in
+        - sms_out
+        - extended_service_message
+        - attachment
+      description: Тип примечания.
     NoteUpdateById:
       type: object
       properties:
@@ -7262,10 +7393,9 @@ components:
           type: integer
           format: int64
         note_type:
-          type: string
+          $ref: '#/components/schemas/NoteType'
         params:
-          type: object
-          unevaluatedProperties: {}
+          $ref: '#/components/schemas/NoteParams'
         updated_by:
           type: integer
           format: int64
@@ -7276,10 +7406,9 @@ components:
       type: object
       properties:
         note_type:
-          type: string
+          $ref: '#/components/schemas/NoteType'
         params:
-          type: object
-          unevaluatedProperties: {}
+          $ref: '#/components/schemas/NoteParams'
         updated_by:
           type: integer
           format: int64
@@ -7299,10 +7428,9 @@ components:
           type: integer
           format: int64
         note_type:
-          type: string
+          $ref: '#/components/schemas/NoteType'
         params:
-          type: object
-          unevaluatedProperties: {}
+          $ref: '#/components/schemas/NoteParams'
         updated_by:
           type: integer
           format: int64
