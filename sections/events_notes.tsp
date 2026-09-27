@@ -172,7 +172,7 @@ interface EntityNotesByParent {
 model Note {
   id?: int64;
   entity_id?: int64;
-  note_type?: string;
+  note_type?: NoteType;
   responsible_user_id?: int64;
   group_id?: int64;
   created_by?: int64;
@@ -181,7 +181,7 @@ model Note {
   updated_at?: int64;
   account_id?: int64;
   is_pinned?: boolean;
-  params?: Record<unknown>;
+  params?: NoteParams;
   _links?: Record<unknown>;
 }
 
@@ -189,8 +189,8 @@ model NoteCreate {
   /** Client-side request id */
   request_id?: string;
   entity_id?: int64;
-  note_type: string;
-  params?: Record<unknown>;
+  note_type: NoteType;
+  params?: NoteParams;
   created_by?: int64;
   responsible_user_id?: int64;
   updated_by?: int64;
@@ -202,23 +202,23 @@ model NoteUpdateItem {
   /** Note id */
   id: int64;
   entity_id?: int64;
-  note_type?: string;
-  params?: Record<unknown>;
+  note_type?: NoteType;
+  params?: NoteParams;
   updated_by?: int64;
   updated_at?: int64;
 }
 
 model NoteUpdateById {
   entity_id?: int64;
-  note_type?: string;
-  params?: Record<unknown>;
+  note_type?: NoteType;
+  params?: NoteParams;
   updated_by?: int64;
   updated_at?: int64;
 }
 
 model NoteUpdateByParentId {
-  note_type?: string;
-  params?: Record<unknown>;
+  note_type?: NoteType;
+  params?: NoteParams;
   updated_by?: int64;
   updated_at?: int64;
 }
@@ -244,4 +244,85 @@ model NoteCreateResponse {
   _embedded?: {
     notes?: NoteCreateResult[];
   };
+}
+
+/** Тип примечания. */
+union NoteType {
+  "common",
+  "call_in",
+  "call_out",
+  "service_message",
+  "message_cashier",
+  "geolocation",
+  "sms_in",
+  "sms_out",
+  "extended_service_message",
+  "attachment",
+}
+
+/**
+ * Параметры примечания: состав зависит от `note_type`. Варианты — от самого специфичного
+ * к общему, дискриминатора внутри params нет.
+ */
+union NoteParams {
+  NoteParamsCall,
+  NoteParamsGeolocation,
+  NoteParamsAttachment,
+  NoteParamsMessageCashier,
+  NoteParamsServiceMessage,
+  NoteParamsSms,
+  NoteParamsCommon,
+}
+
+/** call_in, call_out */
+model NoteParamsCall {
+  uniq: string;
+  /** Длительность звонка в секундах */
+  duration: int32;
+  source: string;
+  /** Ссылка на запись звонка */
+  link: string;
+  phone: string;
+  /** Имя ответственного или ID пользователя */
+  call_responsible: string | int64;
+}
+
+/** geolocation */
+model NoteParamsGeolocation {
+  text: string;
+  address: string;
+  longitude: string;
+  latitude: string;
+}
+
+/** attachment */
+model NoteParamsAttachment {
+  /** Версия файла; без неё берётся последняя */
+  version_uuid?: string;
+  file_uuid: string;
+  /** Название файла, которое отображается в примечании */
+  file_name: string;
+}
+
+/** message_cashier */
+model NoteParamsMessageCashier {
+  status: "created" | "shown" | "canceled";
+  text: string;
+}
+
+/** service_message, extended_service_message */
+model NoteParamsServiceMessage {
+  service: string;
+  text: string;
+}
+
+/** sms_in, sms_out */
+model NoteParamsSms {
+  text: string;
+  phone: string;
+}
+
+/** common */
+model NoteParamsCommon {
+  text: string;
 }
